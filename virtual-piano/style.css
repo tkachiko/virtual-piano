@@ -160,9 +160,13 @@ body {
 .piano-key::after {
     content: attr(data-note);
 <<<<<<< HEAD
+<<<<<<< HEAD
     pointer-events: none;
 =======
 >>>>>>> init: start task
+=======
+    pointer-events: none;
+>>>>>>> feat: disable pointer events for letters & notes
     position: absolute;
     width: 40px;
     height: 40px;

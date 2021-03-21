@@ -30,14 +30,18 @@ const playKey = (event) => {
     const src = `assets/audio/${note}.mp3`;
     if (!src) return;
     if (event.repeat) return;
-    if (event.code[3] === key.dataset.letter) playAudio(src);
+    if (event.code.length === 4) {
+      if (event.code[3] === key.dataset.letter) playAudio(src);
+    }
   });
 
   const key = document.querySelector(
     `.piano-key[data-letter="${event.code[3]}"]`
   );
   if (!key) return;
-  key.classList.add("piano-key-active-pseudo", "piano-key-active");
+  if (event.code.length === 4) {
+    key.classList.add("piano-key-active-pseudo", "piano-key-active");
+  }
 };
 
 const switchToLetters = () => {

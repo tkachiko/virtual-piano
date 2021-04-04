@@ -100,33 +100,21 @@ const piano = document.querySelector('.piano');
 const pianoKeys = document.querySelectorAll('.piano-key');
 const fullscreen = document.querySelector('.fullscreen');
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> feat: implement audio playback on keydown event in script.js
 =======
 const btnNotes = document.querySelector('.btn-notes')
 const btnLetters = document.querySelector('.btn-letters')
 >>>>>>> feat: implement switching between notes/letters modes in script.js
+=======
+const btnNotes = document.querySelector('.btn-notes');
+const btnLetters = document.querySelector('.btn-letters');
+let isPressed = false;
+>>>>>>> refactor: change structure of the project in script.js
 
-pianoKeys.forEach((key) => key.addEventListener('transitionend', removeTransition));
-
-btnNotes.addEventListener('click', switchToNotes)
-btnLetters.addEventListener('click', switchToLetters)
-fullscreen.addEventListener('click', togglefullscreen);
-piano.addEventListener('mousedown', playAudio);
-window.addEventListener('keydown', playOnKey);
-
-function switchToLetters() {
-    btnLetters.classList.add('btn-active')
-    pianoKeys.forEach(key => key.classList.add('letter'))
-    btnNotes.classList.remove('btn-active')
-}
-
-function switchToNotes() {
-    btnNotes.classList.add('btn-active')
-    pianoKeys.forEach(key => key.classList.remove('letter'))
-    btnLetters.classList.remove('btn-active')
-}
 
 function playAudio(event) {
+    isPressed = true;
     const note = event.target.dataset.note;
     const audio = document.querySelector(`audio[data-note="${note}"]`);
     const key = document.querySelector(`.piano-key[data-note="${note}"]`);
@@ -147,6 +135,18 @@ function playOnKey(event) {
     key.classList.add('piano-key-active-pseudo', 'piano-key-active');
 }
 
+function switchToLetters() {
+    btnLetters.classList.add('btn-active');
+    pianoKeys.forEach((key) => key.classList.add('letter'));
+    btnNotes.classList.remove('btn-active');
+}
+
+function switchToNotes() {
+    btnNotes.classList.add('btn-active');
+    pianoKeys.forEach((key) => key.classList.remove('letter'));
+    btnLetters.classList.remove('btn-active');
+}
+
 function removeTransition(event) {
     if (event.propertyName !== 'transform') return;
 
@@ -163,4 +163,24 @@ function togglefullscreen() {
         document.exitFullscreen();
     }
 }
+<<<<<<< HEAD
 >>>>>>> feat: implement fullscreen mode in index.js
+=======
+
+piano.addEventListener('mousedown', playAudio);
+piano.addEventListener('mouseover', function(e) {
+    if (isPressed !== true) return;
+    playAudio(e);
+});
+piano.addEventListener('mouseup', function(e) {
+    isPressed = false;
+});
+window.addEventListener('keydown', playOnKey);
+
+pianoKeys.forEach((key) => key.addEventListener('transitionend', removeTransition));
+
+fullscreen.addEventListener('click', togglefullscreen);
+
+btnNotes.addEventListener('click', switchToNotes);
+btnLetters.addEventListener('click', switchToLetters);
+>>>>>>> refactor: change structure of the project in script.js

@@ -105,6 +105,7 @@ body {
     background-color: rgba(255, 255, 255, 0.85);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     margin: 4px;
 =======
     border: 4px solid #313940;
@@ -112,6 +113,9 @@ body {
 =======
     margin: 4px;
 >>>>>>> refactor: change structure of the project
+=======
+    margin: 4px;
+>>>>>>> 6e8de8884e68604787dcf5e1001859185c2226b8
     border-radius: 0px 0px 12px 12px;
     transition: 0.3s;
     cursor: pointer;
@@ -144,12 +148,16 @@ body {
     transform-origin: center top;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     margin: 0px;
 =======
 >>>>>>> init: start task
 =======
     margin: 0px;
 >>>>>>> refactor: change structure of the project
+=======
+    margin: 0px;
+>>>>>>> 6e8de8884e68604787dcf5e1001859185c2226b8
 }
 
 .piano-key.piano-key-active,
@@ -169,12 +177,16 @@ body {
     content: attr(data-note);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     pointer-events: none;
 =======
 >>>>>>> init: start task
 =======
     pointer-events: none;
 >>>>>>> feat: disable pointer events for letters & notes
+=======
+    pointer-events: none;
+>>>>>>> 6e8de8884e68604787dcf5e1001859185c2226b8
     position: absolute;
     width: 40px;
     height: 40px;

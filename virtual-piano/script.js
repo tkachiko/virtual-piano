@@ -1,14 +1,20 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> refactor: change structure of the project
+=======
+>>>>>>> 6e8de8884e68604787dcf5e1001859185c2226b8
 const piano = document.querySelector(".piano");
 const pianoKeys = document.querySelectorAll(".piano-key");
 const fullscreen = document.querySelector(".fullscreen");
 const btnNotes = document.querySelector(".btn-notes");
 const btnLetters = document.querySelector(".btn-letters");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6e8de8884e68604787dcf5e1001859185c2226b8
 let isPressed = false;
 
 const playAudio = (src) => {
@@ -95,6 +101,7 @@ fullscreen.addEventListener("click", togglefullscreen);
 
 btnNotes.addEventListener("click", switchToNotes);
 btnLetters.addEventListener("click", switchToLetters);
+<<<<<<< HEAD
 =======
 const piano = document.querySelector('.piano')
 const pianoKeys = document.querySelectorAll('.piano-key')
@@ -232,3 +239,5 @@ btnLetters.addEventListener('click', switchToLetters);
 btnNotes.addEventListener("click", switchToNotes);
 btnLetters.addEventListener("click", switchToLetters);
 >>>>>>> refactor: change structure of the project
+=======
+>>>>>>> 6e8de8884e68604787dcf5e1001859185c2226b8

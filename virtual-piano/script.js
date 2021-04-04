@@ -1,10 +1,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> refactor: change structure of the project
 const piano = document.querySelector(".piano");
 const pianoKeys = document.querySelectorAll(".piano-key");
 const fullscreen = document.querySelector(".fullscreen");
 const btnNotes = document.querySelector(".btn-notes");
 const btnLetters = document.querySelector(".btn-letters");
+<<<<<<< HEAD
 let isPressed = false;
 
 const playAudio = (src) => {
@@ -109,47 +113,65 @@ const btnLetters = document.querySelector('.btn-letters')
 =======
 const btnNotes = document.querySelector('.btn-notes');
 const btnLetters = document.querySelector('.btn-letters');
+=======
+>>>>>>> refactor: change structure of the project
 let isPressed = false;
 >>>>>>> refactor: change structure of the project in script.js
 
+const playAudio = (src) => {
+  const audio = new Audio();
+  audio.src = src;
+  audio.currentTime = 0;
+  audio.play();
+};
 
-function playAudio(event) {
-    isPressed = true;
-    const note = event.target.dataset.note;
-    const audio = document.querySelector(`audio[data-note="${note}"]`);
-    const key = document.querySelector(`.piano-key[data-note="${note}"]`);
-    audio.currentTime = 0;
-    audio.play();
+const playNote = (event) => {
+  isPressed = true;
+  const note = event.target.dataset.note;
+  const src = `assets/audio/${note}.mp3`;
+  const key = document.querySelector(`.piano-key[data-note="${note}"]`);
 
-    key.classList.add('piano-key-active-pseudo', 'piano-key-active');
-}
+  if (event.target.classList.contains("piano-key")) {
+    playAudio(src);
+    key.classList.add("piano-key-active-pseudo", "piano-key-active");
+  }
+};
 
-function playOnKey(event) {
-    const audio = document.querySelector(`audio[data-key="${event.code}"]`);
-    const key = document.querySelector(`.piano-key[data-key="${event.code}"]`);
-    if (!audio) return;
+const playKey = (event) => {
+  pianoKeys.forEach((key) => {
+    const note = key.dataset.note;
+    const src = `assets/audio/${note}.mp3`;
+    if (!src) return;
     if (event.repeat) return;
-    audio.currentTime = 0;
-    audio.play();
+    if (event.code[3] === key.dataset.letter) playAudio(src);
+  });
 
-    key.classList.add('piano-key-active-pseudo', 'piano-key-active');
-}
+  const key = document.querySelector(
+    `.piano-key[data-letter="${event.code[3]}"]`
+  );
+  if (!key) return;
+  key.classList.add("piano-key-active-pseudo", "piano-key-active");
+};
 
-function switchToLetters() {
-    btnLetters.classList.add('btn-active');
-    pianoKeys.forEach((key) => key.classList.add('letter'));
-    btnNotes.classList.remove('btn-active');
-}
+const switchToLetters = () => {
+  btnLetters.classList.add("btn-active");
+  pianoKeys.forEach((key) => key.classList.add("letter"));
+  btnNotes.classList.remove("btn-active");
+};
 
-function switchToNotes() {
-    btnNotes.classList.add('btn-active');
-    pianoKeys.forEach((key) => key.classList.remove('letter'));
-    btnLetters.classList.remove('btn-active');
-}
+const switchToNotes = () => {
+  btnNotes.classList.add("btn-active");
+  pianoKeys.forEach((key) => key.classList.remove("letter"));
+  btnLetters.classList.remove("btn-active");
+};
 
-function removeTransition(event) {
-    if (event.propertyName !== 'transform') return;
+const removeActive = () => {
+  pianoKeys.forEach((key) =>
+    key.classList.remove("piano-key-active-pseudo", "piano-key-active")
+  );
+};
 
+<<<<<<< HEAD
     this.classList.remove('piano-key-active-pseudo', 'piano-key-active');
 }
 <<<<<<< HEAD
@@ -171,16 +193,38 @@ piano.addEventListener('mousedown', playAudio);
 piano.addEventListener('mouseover', function(e) {
     if (isPressed !== true) return;
     playAudio(e);
+=======
+const togglefullscreen = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+};
+
+piano.addEventListener("mousedown", playNote);
+piano.addEventListener("mouseover", function (e) {
+  if (isPressed !== true) return;
+  removeActive();
+  playNote(e);
+>>>>>>> refactor: change structure of the project
 });
-piano.addEventListener('mouseup', function(e) {
-    isPressed = false;
+window.addEventListener("mouseup", () => {
+  isPressed = false;
+  removeActive();
 });
-window.addEventListener('keydown', playOnKey);
+window.addEventListener("keydown", playKey);
+window.addEventListener("keyup", () => {
+  removeActive();
+});
 
-pianoKeys.forEach((key) => key.addEventListener('transitionend', removeTransition));
+fullscreen.addEventListener("click", togglefullscreen);
 
-fullscreen.addEventListener('click', togglefullscreen);
-
+<<<<<<< HEAD
 btnNotes.addEventListener('click', switchToNotes);
 btnLetters.addEventListener('click', switchToLetters);
 >>>>>>> refactor: change structure of the project in script.js
+=======
+btnNotes.addEventListener("click", switchToNotes);
+btnLetters.addEventListener("click", switchToLetters);
+>>>>>>> refactor: change structure of the project

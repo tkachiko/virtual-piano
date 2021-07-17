@@ -1,1 +1,1 @@
-https://tkachiko-virtual-piano.netlify.app
+https://tkachiko.github.io/virtual-piano/
